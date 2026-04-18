@@ -1,0 +1,173 @@
+import { useEffect, useRef, useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
+import { Menu, X, Instagram, Facebook, Phone as WhatsApp } from 'lucide-react';
+import { cn } from './lib/utils';
+import Lenis from 'lenis';
+
+// Pages
+import Home from './pages/Home';
+import ReservePage from './pages/ReservePage';
+import MenuPage from './pages/MenuPage';
+
+// --- Shared Components ---
+
+const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
+  const isHome = location.pathname === '/';
+  
+  const scrollTo = (id: string) => {
+      setIsMenuOpen(false);
+      if (isHome) {
+          const el = document.getElementById(id);
+          if (el) {
+              el.scrollIntoView({ behavior: 'smooth' });
+          }
+      } else {
+          window.location.href = `/#${id}`;
+      }
+  };
+
+  return (
+    <nav className="fixed top-0 left-0 w-full h-[80px] z-[100] transition-all duration-300">
+      <div className="flex items-center justify-between px-6 md:px-[60px] h-full backdrop-blur-md bg-glass border-b border-black/5">
+        <Link to="/" className="text-2xl font-serif font-bold italic tracking-wider text-primary">
+          Pastel Bistro
+        </Link>
+        <div className="hidden md:flex items-center gap-[40px] text-[11px] uppercase tracking-[2px] font-medium">
+          <button onClick={() => scrollTo('experience')} className="hover:text-accent transition-colors">Experience</button>
+          <button onClick={() => scrollTo('menu')} className="hover:text-accent transition-colors">Menu</button>
+          <button onClick={() => scrollTo('chef')} className="hover:text-accent transition-colors">The Chef</button>
+          <Link to="/reserve" className="btn-geometric">Book Your Table</Link>
+        </div>
+        <button className="md:hidden p-2 text-primary" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+        </button>
+      </div>
+
+      {/* Mobile Menu */}
+      <div className={cn(
+        "fixed inset-0 top-[80px] bg-white z-40 flex flex-col items-center justify-center gap-8 transition-transform duration-500 ease-in-out md:hidden",
+        isMenuOpen ? "translate-x-0" : "translate-x-full"
+      )}>
+        <button onClick={() => scrollTo('experience')} className="text-3xl font-serif">Experience</button>
+        <button onClick={() => scrollTo('menu')} className="text-3xl font-serif">Menu</button>
+        <button onClick={() => scrollTo('chef')} className="text-3xl font-serif">The Chef</button>
+        <Link to="/reserve" className="btn-geometric text-lg mt-4" onClick={() => setIsMenuOpen(false)}>Book Your Table</Link>
+      </div>
+    </nav>
+  );
+};
+
+const WhatsAppCTA = () => {
+    return (
+        <div className="py-16 bg-soft-bg flex flex-col items-center justify-center gap-8 border-b border-black/5">
+            <span className="section-label-gold mb-0">Direct Concierge</span>
+            <a 
+                href="https://wa.me/1234567890?text=Hi,%20I'd%20like%20to%20book%20a%20table%20at%20Pastel%20Bistro" 
+                target="_blank" 
+                rel="noreferrer"
+                className="flex items-center gap-4 text-xl font-serif text-primary hover:text-accent transition-all group"
+            >
+                <WhatsApp className="w-6 h-6 animate-pulse" /> 
+                <span className="border-b border-black/10 group-hover:border-accent">Reserve on WhatsApp</span>
+            </a>
+        </div>
+    );
+};
+
+const Footer = () => {
+    return (
+        <footer className="py-12 md:py-20 px-6 md:px-[60px] bg-white">
+            <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between gap-12 items-start">
+                <div className="max-w-md">
+                    <h3 className="text-2xl md:text-3xl font-serif italic mb-6">Pastel Bistro</h3>
+                    <p className="text-primary/50 text-sm font-light leading-relaxed mb-8">
+                        Where every plate tells a story and every evening is an masterpiece. Established in 1994 to bring French avant-garde culinary arts to your table.
+                    </p>
+                    <div className="flex gap-4">
+                        <a href="https://instagram.com" target="_blank" rel="noreferrer" className="p-3 border border-black/5 hover:bg-primary hover:text-white transition-all"><Instagram className="w-5 h-5" /></a>
+                        <a href="https://facebook.com" target="_blank" rel="noreferrer" className="p-3 border border-black/5 hover:bg-primary hover:text-white transition-all"><Facebook className="w-5 h-5" /></a>
+                    </div>
+                </div>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
+                    <div>
+                        <span className="section-label-gold">Location</span>
+                        <p className="text-primary/60 text-sm leading-relaxed">
+                            Avenue Montaigne,<br/>Paris, France 75008
+                        </p>
+                    </div>
+                    <div>
+                        <span className="section-label-gold">Inquiries</span>
+                        <p className="text-primary/60 text-sm leading-relaxed mb-1">
+                            concierge@pastel.com
+                        </p>
+                        <p className="text-primary/60 text-sm leading-relaxed">
+                            +33 (0) 1 42 25 25 25
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div className="max-w-7xl mx-auto mt-12 md:mt-20 pt-8 border-t border-black/5 flex flex-col md:flex-row justify-between items-center text-[10px] text-primary/30 uppercase tracking-[2px] gap-4">
+                <p>© 2024 Pastel Bistro. Paris.</p>
+                <div className="flex gap-6">
+                    <a href="#" className="hover:text-accent transition-colors">Privacy</a>
+                    <a href="#" className="hover:text-accent transition-colors">Legal</a>
+                </div>
+            </div>
+        </footer>
+    );
+};
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
+
+// --- Main App ---
+
+export default function App() {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const lenis = new Lenis({
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        smoothWheel: true,
+    });
+
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    return () => {
+      lenis.destroy();
+    };
+  }, []);
+
+  return (
+    <Router>
+      <ScrollToTop />
+      <div ref={scrollRef} className="relative w-full overflow-x-hidden selection:bg-accent selection:text-white bg-soft-bg">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/reserve" element={<ReservePage />} />
+          <Route path="/menu" element={<MenuPage />} />
+        </Routes>
+        <WhatsAppCTA />
+        <Footer />
+      </div>
+    </Router>
+  );
+}
