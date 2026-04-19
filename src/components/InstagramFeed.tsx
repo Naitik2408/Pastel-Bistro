@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Instagram, Play, Heart, MessageCircle, X } from 'lucide-react';
+import SmartImage from './SmartImage';
 
 interface InstagramPost {
     id: number;
@@ -132,13 +133,10 @@ export const InstagramFeed = () => {
                             onClick={() => setSelectedPost(post)}
                         >
                             <div className="aspect-[4/5] relative overflow-hidden">
-                                <img 
+                                <SmartImage 
                                     src={post.url} 
                                     alt="Pastel Bistro Instagram" 
                                     className="w-full h-full object-cover"
-                                    loading="lazy"
-                                    decoding="async"
-                                    referrerPolicy="no-referrer"
                                 />
                                 
                                 {/* Overlay */}
@@ -199,12 +197,12 @@ export const InstagramFeed = () => {
 
                             {/* Image Container */}
                             <div className="w-full md:w-3/5 bg-soft-bg relative">
-                                <img 
+                                <SmartImage 
                                     src={selectedPost.url.replace('w=800', 'w=1200')} 
                                     alt="Preview" 
                                     className="w-full h-full object-contain max-h-[70vh] md:max-h-none"
-                                    referrerPolicy="no-referrer"
-                                    decoding="async"
+                                    loading="eager"
+                                    fetchPriority="high"
                                 />
                                 {selectedPost.type === 'reel' && (
                                     <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
