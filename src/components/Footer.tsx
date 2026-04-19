@@ -6,14 +6,7 @@ export default function Footer() {
             <div className="max-w-7xl mx-auto">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
                     <div className="flex flex-col items-start">
-                        <div className="flex items-center gap-3 mb-6">
-                            <img 
-                                src="/assets/logo.jpg" 
-                                alt="Pastel Bistro" 
-                                className="h-[80px] w-auto opacity-90"
-                            />
-                            <h3 className="text-2xl font-serif font-bold italic text-white">Pastel Bistro</h3>
-                        </div>
+                        <h3 className="text-2xl font-serif font-bold italic text-white mb-6">Pastel Bistro</h3>
                         <p className="text-white/60 text-sm leading-relaxed font-light">
                             Where elegance meets flavours. A culinary sanctuary since 1994.
                         </p>
