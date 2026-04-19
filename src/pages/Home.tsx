@@ -123,7 +123,7 @@ const DishesScroll = () => {
         scrollTrigger: {
           trigger: sectionRef.current,
           pin: true,
-          scrub: 1,
+          scrub: true,
           snap: 1 / (panels.length - 1),
           end: () => "+=" + containerRef.current?.offsetWidth,
         }
