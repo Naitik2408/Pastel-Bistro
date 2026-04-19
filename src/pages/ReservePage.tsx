@@ -4,6 +4,7 @@ import { useGSAP } from '@gsap/react';
 import { ArrowLeft, ArrowRight, Users, Calendar as CalendarIcon, Clock, Sofa, MapPin, Wind, Layout } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { cn } from '../lib/utils';
+import { WHATSAPP_NUMBER } from '../components/Footer';
 
 const guestOptions = ["1-2", "3-4", "5-6", "7+"];
 const timeSlots = ["6:00 PM", "7:00 PM", "8:00 PM", "9:00 PM"];
@@ -56,7 +57,7 @@ export default function ReservePage() {
 
 Please confirm availability.`;
 
-        const waUrl = `https://wa.me/1234567890?text=${encodeURIComponent(message)}`;
+        const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
         
         setTimeout(() => {
             window.location.href = waUrl;

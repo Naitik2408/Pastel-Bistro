@@ -4,6 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import { Calendar, ArrowRight } from 'lucide-react';
 import { InstagramFeed } from '../components/InstagramFeed';
+import Footer from '../components/Footer';
 import { Link, useNavigate } from 'react-router-dom';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -74,12 +75,18 @@ const Hero = () => {
               <span className="section-label-gold">Signature Dishes</span>
               <div className="flex flex-col gap-8">
                   {[
-                      { title: "Parsi Style Egg Akuri", desc: "Spiced scrambled eggs, brioche.", color: "#E6DED1" },
-                      { title: "Israeli Falafel Veg", desc: "Traditional falafel, pita pockets.", color: "#E2E7E1" },
-                      { title: "Korean Mushroom Omelet", desc: "Earthy mushrooms, Korean zest.", color: "#F1E5E5" }
+                      { title: "Parsi Style Egg Akuri", desc: "Spiced scrambled eggs, brioche.", img: "https://images.unsplash.com/photo-1541519227354-08fa5d50c44d?q=75&w=200&auto=format&fit=crop" },
+                      { title: "Israeli Falafel Veg", desc: "Traditional falafel, pita pockets.", img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=75&w=200&auto=format&fit=crop" },
+                      { title: "Korean Mushroom Omelet", desc: "Earthy mushrooms, Korean zest.", img: "https://images.unsplash.com/photo-1704524853986-605716a8e775?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" }
                   ].map((dish, i) => (
                       <div key={i} className="flex gap-4 items-center pb-6 border-b border-black/5 last:border-0">
-                          <div className="w-[70px] h-[70px] rounded-full flex-shrink-0" style={{ backgroundColor: dish.color }}></div>
+                          <img 
+                              src={dish.img} 
+                              alt={dish.title}
+                              className="w-[70px] h-[70px] rounded-full flex-shrink-0 object-cover"
+                              loading="lazy"
+                              decoding="async"
+                          />
                           <div>
                               <h4 className="text-base font-serif mb-1">{dish.title}</h4>
                               <p className="text-xs text-primary/50">{dish.desc}</p>
@@ -117,7 +124,7 @@ const CulinaryHighlights = () => {
       { 
         title: "Lotus Stem Falafel", 
         desc: "Crisp lotus stem medallions paired with house-made tahini and pickled artisanal vegetables.", 
-        img: "https://images.unsplash.com/photo-1547050605-2f268809037e?q=75&w=1200&auto=format&fit=crop",
+        img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=75&w=1200&auto=format&fit=crop",
         category: "Entrées"
       },
       { 
@@ -227,8 +234,8 @@ const Experience = () => {
           <div className="relative mt-12 md:mt-0">
               <div className="absolute inset-0 border border-accent/20 translate-x-4 translate-y-4"></div>
               <img 
-                  src="https://images.unsplash.com/photo-1550966842-1e967a57a030?q=70&w=1000&auto=format&fit=crop" 
-                  alt="Atmosphere" 
+                  src="https://images.unsplash.com/photo-1768777273143-570e6c7db344?q=80&w=688&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                  alt="Fine Dining Experience" 
                   className="relative z-10 w-full rounded-sm shadow-xl"
                   loading="lazy"
                   decoding="async"
@@ -378,6 +385,7 @@ export default function Home() {
             <InstagramFeed />
             <MenuPreview />
             <BookingSummary />
+            <Footer />
         </div>
     );
 }

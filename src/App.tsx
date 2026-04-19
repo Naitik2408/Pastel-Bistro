@@ -40,8 +40,13 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 w-full h-[80px] z-[100] transition-all duration-300">
       <div className="flex items-center justify-between px-6 md:px-[60px] h-full backdrop-blur-md bg-glass border-b border-black/5">
-        <Link to="/" className="text-2xl font-serif font-bold italic tracking-wider text-primary">
-          Pastel Bistro
+        <Link to="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
+          <img 
+            src="/assets/logo.jpg" 
+            alt="Pastel Bistro" 
+            className="h-[60px] w-auto"
+          />
+          <span className="text-xl font-serif font-bold italic tracking-wider text-primary hidden sm:block">Pastel Bistro</span>
         </Link>
         <div className="hidden md:flex items-center gap-[40px] text-[11px] uppercase tracking-[2px] font-medium">
           <button onClick={() => scrollTo('experience')} className="hover:text-accent transition-colors">Experience</button>

@@ -1,19 +1,21 @@
 import { ArrowLeft } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import Footer from '../components/Footer';
 
 export default function StoryPage() {
     const navigate = useNavigate();
 
     return (
-        <main className="pt-32 pb-24 px-6 md:px-[60px] bg-white min-h-screen">
-            <div className="max-w-4xl mx-auto">
-                <button 
-                    onClick={() => navigate(-1)}
-                    className="flex items-center gap-2 text-accent font-bold uppercase tracking-[2px] text-xs mb-12 hover:gap-4 transition-all"
-                >
-                    <ArrowLeft className="w-4 h-4" />
-                    <span>Back to Home</span>
-                </button>
+        <>
+            <main className="pt-32 pb-24 px-6 md:px-[60px] bg-white min-h-screen">
+                <div className="max-w-4xl mx-auto">
+                    <button 
+                        onClick={() => navigate(-1)}
+                        className="flex items-center gap-2 text-accent font-bold uppercase tracking-[2px] text-xs mb-12 hover:gap-4 transition-all"
+                    >
+                        <ArrowLeft className="w-4 h-4" />
+                        <span>Back to Home</span>
+                    </button>
 
                 <span className="section-label-gold">Our Philosophy</span>
                 <h1 className="text-4xl md:text-7xl font-serif italic mb-12 leading-tight">The Full Story <br/><span className="text-accent underline decoration-black/5 underline-offset-8 font-serif">of Pastel Bistro</span></h1>
@@ -21,9 +23,11 @@ export default function StoryPage() {
                 <div className="grid md:grid-cols-2 gap-12 mb-20">
                     <div className="aspect-[4/5] bg-muted overflow-hidden">
                         <img 
-                            src="https://images.unsplash.com/photo-1550966842-1e967a57a030?q=70&w=1000&auto=format&fit=crop" 
+                            src="https://images.unsplash.com/photo-1613870112860-53f75650c6c3?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
                             alt="The beginning" 
                             className="w-full h-full object-cover"
+                            loading="lazy"
+                            decoding="async"
                             referrerPolicy="no-referrer"
                         />
                     </div>
@@ -50,7 +54,43 @@ export default function StoryPage() {
                     </p>
                 </div>
 
-                <div className="mt-20 pt-12 border-t border-black/5">
+                <div className="mt-20 pt-12 border-t border-black/5 mb-16">
+                    <h3 className="text-2xl font-serif mb-8 italic">Our Culinary Journey</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                        <div className="aspect-square bg-muted overflow-hidden rounded-sm">
+                            <img 
+                                src="https://images.unsplash.com/photo-1559339352-11d035aa65de?q=75&w=800&auto=format&fit=crop" 
+                                alt="Culinary Excellence" 
+                                className="w-full h-full object-cover"
+                                loading="lazy"
+                                decoding="async"
+                                referrerPolicy="no-referrer"
+                            />
+                        </div>
+                        <div className="aspect-square bg-muted overflow-hidden rounded-sm">
+                            <img 
+                                src="https://images.unsplash.com/photo-1497644083578-611b798c60f3?q=75&w=800&auto=format&fit=crop" 
+                                alt="Fresh Ingredients" 
+                                className="w-full h-full object-cover"
+                                loading="lazy"
+                                decoding="async"
+                                referrerPolicy="no-referrer"
+                            />
+                        </div>
+                        <div className="aspect-square bg-muted overflow-hidden rounded-sm">
+                            <img 
+                                src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=75&w=800&auto=format&fit=crop" 
+                                alt="Kitchen Craft" 
+                                className="w-full h-full object-cover"
+                                loading="lazy"
+                                decoding="async"
+                                referrerPolicy="no-referrer"
+                            />
+                        </div>
+                    </div>
+                </div>
+
+                <div className="pt-12 border-t border-black/5">
                     <h3 className="text-2xl font-serif mb-8 italic">Cultivating Community</h3>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         <div>
@@ -67,7 +107,9 @@ export default function StoryPage() {
                         </div>
                     </div>
                 </div>
-            </div>
-        </main>
+                </div>
+            </main>
+            <Footer />
+        </>
     );
 }
