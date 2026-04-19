@@ -8,34 +8,66 @@ const menuCategories = [
   {
     title: "Le Matin — Breakfast",
     items: [
-      { name: "Pain au Chocolat", price: "€8", desc: "Double-layered butter pastry, dark Belgian core." },
-      { name: "Avocado & Truffle", price: "€18", desc: "Sourdough, shaved truffles, poached organic egg." },
-      { name: "Smoothie Bowl", price: "€14", desc: "Acai, wild berries, gold-dusted granola." }
+      { name: "Avocado Toast", price: "₹455", desc: "Fresh avocado on crusty sourdough with signature seasoning." },
+      { name: "Parsi Style Egg Akuri Brioche", price: "₹299", desc: "Spiced scrambled eggs served on buttery brioche." },
+      { name: "Israeli Falafel Breakfast Veg", price: "₹345", desc: "Traditional falafel with mediterranean accompaniments." },
+      { name: "Korean Mushroom Omelet", price: "₹325", desc: "Fluffy eggs with earthy mushrooms and Korean spices." },
+      { name: "Nashiville Breakfast", price: "₹375", desc: "Bold and spicy morning classic." }
     ]
   },
   {
-    title: "L'Entrée — Starters",
+    title: "L'Entrée — Small Plates",
     items: [
-      { name: "Burrata Bloom", price: "€22", desc: "Honey-glazed figs, balsamic pearls, micro-basil." },
-      { name: "Lobster Bisque", price: "€24", desc: "Cognac-infused velvet soup, lobster chunks." },
-      { name: "Beef Carpaccio", price: "€26", desc: "Wagyu thin slices, caper dust, parmesan cloud." }
+      { name: "Lotus Stem Falafel", price: "₹495", desc: "Unique twist on falafel using crisp lotus stem." },
+      { name: "Edamame Ricotta Kebab", price: "₹575", desc: "Silky ricotta and edamame fusion kebabs." },
+      { name: "Adana Kebab", price: "₹525", desc: "Spiced minced meat grilled to perfection." },
+      { name: "Korean Cottage Cheese Poppers", price: "₹525", desc: "Crunchy poppers with a zesty Korean glaze." },
+      { name: "Pesto Dahi Kebab", price: "₹465", desc: "Traditional dahi kebabs infused with fresh basil pesto." }
     ]
   },
   {
-    title: "Le Plat — Mains",
+    title: "La Pasta — Italian Selection",
     items: [
-      { name: "Saffron Risotto", price: "€34", desc: "Arborio rice, gold leaf, 24-month aged parmesan." },
-      { name: "Velvet Salmon", price: "€38", desc: "Maple glaze, asparagus ribbons, lemon foam." },
-      { name: "Duck Confit", price: "€42", desc: "Slow-rendered leg, cherry reduction, parsnip puree." },
-      { name: "Truffle Linguine", price: "€36", desc: "House-made pasta, black truffle sauce, chives." }
+      { name: "Truffle Shroom Pasta", price: "₹555", desc: "Creamy mushroom sauce with a luxurious truffle finish." },
+      { name: "Butter Chicken Pasta", price: "₹595", desc: "Italian pasta meeting the rich flavours of the East." },
+      { name: "Pesto Pasta", price: "₹495", desc: "Freshly pounded basil and pine nut sauce." },
+      { name: "Pink Sauce Pasta", price: "₹455", desc: "Harmonious blend of tangy red and creamy white sauces." }
+    ]
+  },
+  {
+    title: "Le Plat — Signature Mains",
+    items: [
+      { name: "Crispy Portuguese Chicken", price: "₹625", desc: "Golden fried chicken with authentic Portuguese spices." },
+      { name: "Grilled Fish Lemon Butter", price: "₹685", desc: "Delicate fish fillet with a zesty butter emulsion." },
+      { name: "Grilled Forest Chicken", price: "₹625", desc: "Herbed chicken served with earthy woodland mushrooms." },
+      { name: "Fish & Chips", price: "₹695", desc: "Classic English staple with our signature house dip." }
+    ]
+  },
+  {
+    title: "Les Pizzas — Stone Hearth",
+    items: [
+      { name: "Chicken Makhani Pizza", price: "₹575", desc: "Creamy makhani base with succulent chicken tandoori." },
+      { name: "Pulled BBQ Chicken Pizza", price: "₹555", desc: "Slow-cooked BBQ chicken with smoky accents." },
+      { name: "Chargrilled Veggie", price: "₹455", desc: "Seasonal garden vegetables with house-made marinara." },
+      { name: "Pesto Pepper Pizza", price: "₹475", desc: "Vibrant basil pesto base with sweet bell peppers." }
+    ]
+  },
+  {
+    title: "Les Boissons — Mocktails & Coffee",
+    items: [
+      { name: "Berry Basil Fizz", price: "₹375", desc: "Vibrant berry blend with fresh aromatic basil." },
+      { name: "Blueberry Lavender Fizz", price: "₹375", desc: "Floral lavender notes with tart blueberry sparklers." },
+      { name: "Spanish Ice Latte", price: "₹279", desc: "Sweet and creamy iced coffee with a Spanish flair." },
+      { name: "Honey Cinnamon Latte", price: "₹245", desc: "Warm and comforting brew with natural sweetness." }
     ]
   },
   {
     title: "Le Dessert — Sweets",
     items: [
-      { name: "Golden Lava", price: "€18", desc: "Warm citrus heart, vanilla bean glace, gold leaf." },
-      { name: "Matcha Tiramisu", price: "€16", desc: "Ceremonial grade matcha, mascarpone, ladyfingers." },
-      { name: "Parisian Soufflé", price: "€20", desc: "Grand Marnier, orange zest, airy perfection." }
+      { name: "Blueberry Cheesecake", price: "₹349", desc: "Velvety cheesecake topped with wild blueberry compote." },
+      { name: "Biscoff Cheesecake", price: "₹379", desc: "Rich caramelised biscuit flavour on a buttery base." },
+      { name: "Chef Special Pannacotta", price: "₹225", desc: "Silky cooked cream with seasonal fruit reduction." },
+      { name: "Choco Lava", price: "₹175", desc: "Oozing warm chocolate heart inside a moist cake." }
     ]
   }
 ];

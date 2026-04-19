@@ -54,7 +54,7 @@ const Hero = () => {
               </div>
               <div className="hero-visual w-full h-[250px] md:h-[320px] rounded-sm overflow-hidden bg-muted relative">
                   <img 
-                      src="https://picsum.photos/seed/bistro-atmosphere-v2/1200/800" 
+                      src="https://images.unsplash.com/photo-1481833761820-0509d3217039?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
                       alt="Bistro Atmosphere" 
                       className="w-full h-full object-cover"
                       referrerPolicy="no-referrer"
@@ -73,9 +73,9 @@ const Hero = () => {
               <span className="section-label-gold">Signature Dishes</span>
               <div className="flex flex-col gap-8">
                   {[
-                      { title: "Creamy Alfredo Pasta", desc: "Hand-rolled fettuccine, truffle essence.", color: "#E6DED1" },
-                      { title: "Walnut Crust Sole", desc: "Citrus beurre blanc, wild asparagus.", color: "#E2E7E1" },
-                      { title: "Fried Chicken Slaw", desc: "Mexican slaw, lime infusion.", color: "#F1E5E5" }
+                      { title: "Parsi Style Egg Akuri", desc: "Spiced scrambled eggs, brioche.", color: "#E6DED1" },
+                      { title: "Israeli Falafel Veg", desc: "Traditional falafel, pita pockets.", color: "#E2E7E1" },
+                      { title: "Korean Mushroom Omelet", desc: "Earthy mushrooms, Korean zest.", color: "#F1E5E5" }
                   ].map((dish, i) => (
                       <div key={i} className="flex gap-4 items-center pb-6 border-b border-black/5 last:border-0">
                           <div className="w-[70px] h-[70px] rounded-full flex-shrink-0" style={{ backgroundColor: dish.color }}></div>
@@ -108,9 +108,9 @@ const DishesScroll = () => {
     const navigate = useNavigate();
   
     const dishes = [
-      { title: "Creamy Alfredo Pasta", desc: "Hand-rolled fettuccine in velvet truffle sauce.", img: "https://picsum.photos/seed/pasta/800/1000" },
-      { title: "Walnut Crust Sole", desc: "Pacific sole with a texture-rich nutty finish.", img: "https://picsum.photos/seed/fish/800/1000" },
-      { title: "Mexican Slaw Chicken", desc: "Crispy skin chicken with zesty lime crunch.", img: "https://picsum.photos/seed/chicken/800/1000" },
+      { title: "Creamy Alfredo Pasta", desc: "Hand-rolled fettuccine in velvet truffle sauce.", img: "https://images.unsplash.com/photo-1761168941826-7efda859bdae?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
+      { title: "Lotus Stem Falafel", desc: "Unique twist on falafel using crisp lotus stem.", img: "https://picsum.photos/seed/falafel/800/1000" },
+      { title: "Crispy Portuguese Chicken", desc: "Golden fried chicken with authentic Portuguese spices.", img: "https://picsum.photos/seed/chicken/800/1000" },
       { title: "Avocado Matcha Smoothie", desc: "A silky fusion of earth and cream.", img: "https://picsum.photos/seed/smoothie/800/1000" },
     ];
   
@@ -277,10 +277,10 @@ const MenuPreview = () => {
     const navigate = useNavigate();
 
     const menuItems = [
-      { name: "Burrata Bloom", price: "$22", desc: "Honey-glazed figs & balsamic pearls.", category: "Starters" },
-      { name: "Saffron Risotto", price: "$34", desc: "Gold leaf garnish & parmesan cloud.", category: "Mains" },
-      { name: "Velvet Salmon", price: "$38", desc: "Cedar plank smoked with maple glaze.", category: "Mains" },
-      { name: "Golden Lava", price: "$18", desc: "Warm citrus heart & vanilla bean glace.", category: "Desserts" },
+      { name: "Truffle Shroom Pasta", price: "₹555", desc: "Creamy mushroom sauce & truffle essence.", category: "Pasta" },
+      { name: "Israeli Falafel Veg", price: "₹345", desc: "Mediterranean feast for the soul.", category: "Breakfast" },
+      { name: "Lotus Stem Falafel", price: "₹495", desc: "Crispy textured small plates.", category: "Starters" },
+      { name: "Blueberry Cheesecake", price: "₹349", desc: "Velvety cheesecake with wild berries.", category: "Desserts" },
     ];
   
     return (
