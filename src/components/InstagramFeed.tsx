@@ -15,7 +15,7 @@ const mockPosts: InstagramPost[] = [
     { 
         id: 1, 
         type: 'image', 
-        url: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80', 
+        url: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=70&w=800&auto=format&fit=crop', 
         originalUrl: 'https://www.instagram.com/',
         aspectRatio: 'aspect-[4/5]', 
         likes: '243', 
@@ -24,7 +24,7 @@ const mockPosts: InstagramPost[] = [
     { 
         id: 2, 
         type: 'reel', 
-        url: 'https://images.unsplash.com/photo-1559925393-8be0ec4767c8?auto=format&fit=crop&q=80', 
+        url: 'https://images.unsplash.com/photo-1559925393-8be0ec4767c8?q=70&w=800&auto=format&fit=crop', 
         originalUrl: 'https://www.instagram.com/',
         aspectRatio: 'aspect-[4/5]', 
         likes: '1.2k', 
@@ -33,7 +33,7 @@ const mockPosts: InstagramPost[] = [
     { 
         id: 3, 
         type: 'image', 
-        url: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80', 
+        url: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=70&w=800&auto=format&fit=crop', 
         originalUrl: 'https://www.instagram.com/',
         aspectRatio: 'aspect-[4/5]', 
         likes: '890', 
@@ -42,7 +42,7 @@ const mockPosts: InstagramPost[] = [
     { 
         id: 4, 
         type: 'reel', 
-        url: 'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&q=80', 
+        url: 'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=70&w=800&auto=format&fit=crop', 
         originalUrl: 'https://www.instagram.com/',
         aspectRatio: 'aspect-[4/5]', 
         likes: '3.4k', 
@@ -51,7 +51,7 @@ const mockPosts: InstagramPost[] = [
     { 
         id: 5, 
         type: 'image', 
-        url: 'https://images.unsplash.com/photo-1624878359580-4d79cfc1e6b2?q=80&w=743&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 
+        url: 'https://images.unsplash.com/photo-1624878359580-4d79cfc1e6b2?q=70&w=800&auto=format&fit=crop', 
         originalUrl: 'https://www.instagram.com/',
         aspectRatio: 'aspect-[4/5]', 
         likes: '567', 
@@ -60,7 +60,7 @@ const mockPosts: InstagramPost[] = [
     { 
         id: 6, 
         type: 'image', 
-        url: 'https://images.unsplash.com/photo-1666770002650-053dd70866af?q=80&w=688&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 
+        url: 'https://images.unsplash.com/photo-1666770002650-053dd70866af?q=70&w=800&auto=format&fit=crop', 
         originalUrl: 'https://www.instagram.com/',
         aspectRatio: 'aspect-[4/5]', 
         likes: '312', 
@@ -69,7 +69,7 @@ const mockPosts: InstagramPost[] = [
     { 
         id: 7, 
         type: 'image', 
-        url: 'https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&q=80', 
+        url: 'https://images.unsplash.com/photo-1552566626-52f8b828add9?q=70&w=800&auto=format&fit=crop', 
         originalUrl: 'https://www.instagram.com/',
         aspectRatio: 'aspect-[4/5]', 
         likes: '2.1k', 
@@ -78,7 +78,7 @@ const mockPosts: InstagramPost[] = [
     { 
         id: 8, 
         type: 'reel', 
-        url: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&q=80', 
+        url: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?q=70&w=800&auto=format&fit=crop', 
         originalUrl: 'https://www.instagram.com/',
         aspectRatio: 'aspect-[4/5]', 
         likes: '1.5k', 
@@ -87,7 +87,7 @@ const mockPosts: InstagramPost[] = [
     { 
         id: 9, 
         type: 'image', 
-        url: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80', 
+        url: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=70&w=800&auto=format&fit=crop', 
         originalUrl: 'https://www.instagram.com/',
         aspectRatio: 'aspect-[4/5]', 
         likes: '723', 
@@ -137,6 +137,7 @@ export const InstagramFeed = () => {
                                     alt="Pastel Bistro Instagram" 
                                     className="w-full h-full object-cover"
                                     loading="lazy"
+                                    decoding="async"
                                     referrerPolicy="no-referrer"
                                 />
                                 
@@ -199,10 +200,11 @@ export const InstagramFeed = () => {
                             {/* Image Container */}
                             <div className="w-full md:w-3/5 bg-soft-bg relative">
                                 <img 
-                                    src={selectedPost.url} 
+                                    src={selectedPost.url.replace('w=800', 'w=1200')} 
                                     alt="Preview" 
                                     className="w-full h-full object-contain max-h-[70vh] md:max-h-none"
                                     referrerPolicy="no-referrer"
+                                    decoding="async"
                                 />
                                 {selectedPost.type === 'reel' && (
                                     <div className="absolute inset-0 flex items-center justify-center pointer-events-none">

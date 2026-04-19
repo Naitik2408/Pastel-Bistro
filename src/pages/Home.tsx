@@ -54,11 +54,12 @@ const Hero = () => {
               </div>
               <div className="hero-visual w-full h-[250px] md:h-[320px] rounded-sm overflow-hidden bg-muted relative">
                   <img 
-                      src="https://images.unsplash.com/photo-1481833761820-0509d3217039?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                      src="https://images.unsplash.com/photo-1481833761820-0509d3217039?q=70&w=1200&auto=format&fit=crop" 
                       alt="Bistro Atmosphere" 
                       className="w-full h-full object-cover"
                       referrerPolicy="no-referrer"
                       loading="eager"
+                      decoding="async"
                   />
               </div>
           </div>
@@ -102,78 +103,90 @@ const Hero = () => {
     );
   };
   
-const DishesScroll = () => {
+const CulinaryHighlights = () => {
     const sectionRef = useRef<HTMLDivElement>(null);
-    const containerRef = useRef<HTMLDivElement>(null);
     const navigate = useNavigate();
   
     const dishes = [
-      { title: "Creamy Alfredo Pasta", desc: "Hand-rolled fettuccine in velvet truffle sauce.", img: "https://images.unsplash.com/photo-1761168941826-7efda859bdae?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
-      { title: "Lotus Stem Falafel", desc: "Unique twist on falafel using crisp lotus stem.", img: "https://picsum.photos/seed/falafel/800/1000" },
-      { title: "Crispy Portuguese Chicken", desc: "Golden fried chicken with authentic Portuguese spices.", img: "https://picsum.photos/seed/chicken/800/1000" },
-      { title: "Avocado Matcha Smoothie", desc: "A silky fusion of earth and cream.", img: "https://picsum.photos/seed/smoothie/800/1000" },
+      { 
+        title: "Creamy Alfredo Pasta", 
+        desc: "Hand-rolled fettuccine in velvet truffle sauce, finished with aged parmesan and fresh herbs.", 
+        img: "https://images.unsplash.com/photo-1761168941826-7efda859bdae?q=75&w=1200&auto=format&fit=crop",
+        category: "Mains"
+      },
+      { 
+        title: "Lotus Stem Falafel", 
+        desc: "Crisp lotus stem medallions paired with house-made tahini and pickled artisanal vegetables.", 
+        img: "https://images.unsplash.com/photo-1547050605-2f268809037e?q=75&w=1200&auto=format&fit=crop",
+        category: "Entrées"
+      },
+      { 
+        title: "Crispy Portuguese Chicken", 
+        desc: "Golden-crusted organic chicken infused with authentic spices and a hint of peri-peri zest.", 
+        img: "https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?q=75&w=1200&auto=format&fit=crop",
+        category: "Signature"
+      },
+      { 
+        title: "Avocado Matcha Smoothie", 
+        desc: "A silky, balanced fusion of ceremonial grade matcha and buttery organic avocado.", 
+        img: "https://images.unsplash.com/photo-1525351484163-7529414344d8?q=75&w=1200&auto=format&fit=crop",
+        category: "Wellness"
+      },
     ];
   
-    useGSAP(() => {
-      const panels = gsap.utils.toArray('.dish-panel');
-      
-      gsap.to(panels, {
-        xPercent: -100 * (panels.length - 1),
-        ease: "none",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          pin: true,
-          scrub: true,
-          snap: 1 / (panels.length - 1),
-          end: () => "+=" + containerRef.current?.offsetWidth,
-        }
-      });
-  
-      panels.forEach((panel: any) => {
-        gsap.from(panel.querySelector('.dish-content'), {
-          opacity: 0,
-          scale: 0.95,
-          duration: 2,
-          scrollTrigger: {
-            trigger: panel,
-            start: "left center",
-            toggleActions: "play none none reverse"
-          }
-        });
-      });
-    }, { scope: sectionRef });
-  
     return (
-      <section ref={sectionRef} className="overflow-hidden bg-primary py-12 md:py-20 border-y border-white/5">
-        <div ref={containerRef} className="flex h-[60vh] md:h-[80vh] w-[400vw]">
-          {dishes.map((dish, i) => (
-            <div key={i} className="dish-panel w-screen h-full flex items-center justify-center px-4 md:px-24">
-              <div className="dish-content grid md:grid-cols-2 bg-white rounded-sm overflow-hidden border border-black/5 max-w-6xl w-full shadow-lg mx-2 md:mx-0 h-full md:h-auto max-h-[95%] md:max-h-none">
-                <div className="h-[40%] md:h-full overflow-hidden">
-                  <img 
-                    src={dish.img} 
-                    alt={dish.title} 
-                    className="w-full h-full object-cover transition-transform duration-700 hover:scale-105" 
-                    referrerPolicy="no-referrer"
-                    loading="lazy"
-                  />
-                </div>
-                <div className="p-4 md:p-16 flex flex-col justify-center text-primary overflow-hidden">
-                  <span className="section-label-gold text-[9px] md:text-[10px] mb-1 md:mb-2">Dish 0{i + 1}</span>
-                  <h3 className="text-xl md:text-5xl mb-2 md:mb-6 font-serif leading-tight">{dish.title}</h3>
-                  <p className="text-primary/60 text-xs md:text-xl font-light leading-relaxed max-w-md line-clamp-2 md:line-clamp-none">{dish.desc}</p>
-                  <div className="mt-3 md:mt-8">
-                      <button 
-                        onClick={() => navigate('/menu')} 
-                        className="btn-geometric py-2 md:py-3 px-4 md:px-6 text-[9px] md:text-[11px]"
-                      >
-                        Learn More
-                      </button>
-                  </div>
-                </div>
-              </div>
+      <section ref={sectionRef} className="py-24 px-6 md:px-[60px] bg-white overflow-hidden">
+        <div className="max-w-7xl mx-auto">
+            <div className="mb-20 text-center md:text-left">
+                <span className="section-label-gold">Seasonal Focus</span>
+                <h2 className="text-4xl md:text-7xl font-serif italic leading-tight">Culinary Highlights</h2>
             </div>
-          ))}
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24">
+                {dishes.map((dish, i) => (
+                    <div key={i} className={`flex flex-col ${i % 2 === 1 ? 'md:mt-24' : ''}`}>
+                        <div className="group relative overflow-hidden bg-muted aspect-[4/5] mb-8">
+                            <img 
+                                src={dish.img} 
+                                alt={dish.title} 
+                                className="w-full h-full object-cover grayscale-[0.2] group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105"
+                                loading="lazy"
+                                decoding="async"
+                                referrerPolicy="no-referrer"
+                            />
+                            <div className="absolute top-6 left-6">
+                                <span className="bg-white/90 backdrop-blur-sm px-4 py-1 text-[10px] uppercase tracking-[2px] font-bold text-primary">
+                                    {dish.category}
+                                </span>
+                            </div>
+                        </div>
+                        <div>
+                            <span className="text-[11px] uppercase tracking-[3px] text-accent font-bold mb-3 block">0{i + 1} // selection</span>
+                            <h3 className="text-3xl md:text-4xl font-serif mb-4 leading-tight">{dish.title}</h3>
+                            <p className="text-primary/60 text-lg font-light leading-relaxed mb-8 max-w-sm">
+                                {dish.desc}
+                            </p>
+                            <button 
+                                onClick={() => navigate('/menu')} 
+                                className="group flex items-center gap-3 text-[11px] uppercase tracking-[2px] font-bold border-b border-primary/20 pb-2 hover:border-accent transition-colors"
+                            >
+                                <span>Discover Dish</span>
+                                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                            </button>
+                        </div>
+                    </div>
+                ))}
+            </div>
+            
+            <div className="mt-24 pt-12 border-t border-black/5 flex flex-col items-center">
+                <p className="text-primary/40 text-sm italic font-serif mb-8 text-center">View our full curated seasonal menu</p>
+                <button 
+                    onClick={() => navigate('/menu')} 
+                    className="btn-geometric px-16 py-5 bg-primary text-white hover:bg-white hover:text-primary border border-primary transition-all shadow-xl"
+                >
+                    The Complete Menu
+                </button>
+            </div>
         </div>
       </section>
     );
@@ -208,9 +221,11 @@ const Experience = () => {
           <div className="relative mt-12 md:mt-0">
               <div className="absolute inset-0 border border-accent/20 translate-x-4 translate-y-4"></div>
               <img 
-                  src="https://picsum.photos/seed/bistro-interiors/800/1000" 
+                  src="https://images.unsplash.com/photo-1550966842-1e967a57a030?q=70&w=1000&auto=format&fit=crop" 
                   alt="Atmosphere" 
                   className="relative z-10 w-full rounded-sm shadow-xl"
+                  loading="lazy"
+                  decoding="async"
                   referrerPolicy="no-referrer"
               />
           </div>
@@ -249,9 +264,11 @@ const Chef = () => {
           <div className="chef-img relative mb-12 md:mb-0">
               <div className="absolute -inset-4 bg-pastel-sage/30 -z-10 rotate-3"></div>
               <img 
-                src="https://picsum.photos/seed/chef-portrait/800/1000" 
+                src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?q=70&w=1000&auto=format&fit=crop" 
                 alt="Executive Chef" 
                 className="w-full rounded-sm"
+                loading="lazy"
+                decoding="async"
                 referrerPolicy="no-referrer"
               />
           </div>
@@ -343,7 +360,7 @@ export default function Home() {
     return (
         <div className="selection:bg-accent selection:text-white">
             <Hero />
-            <DishesScroll />
+            <CulinaryHighlights />
             <Experience />
             <Chef />
             <InstagramFeed />
