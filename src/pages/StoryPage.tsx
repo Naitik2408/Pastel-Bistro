@@ -1,13 +1,11 @@
 import { ArrowLeft } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import Footer from '../components/Footer';
 
 export default function StoryPage() {
     const navigate = useNavigate();
 
     return (
-        <>
-            <main className="pt-32 pb-24 px-6 md:px-[60px] bg-white min-h-screen">
+        <main className="pt-32 pb-24 px-6 md:px-[60px] bg-white min-h-screen">
                 <div className="max-w-4xl mx-auto">
                     <button 
                         onClick={() => navigate(-1)}
@@ -109,7 +107,5 @@ export default function StoryPage() {
                 </div>
                 </div>
             </main>
-            <Footer />
-        </>
     );
 }

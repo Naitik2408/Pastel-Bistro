@@ -1,6 +1,5 @@
 import { ArrowLeft } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import Footer from '../components/Footer';
 
 export default function GalleryPage() {
     const navigate = useNavigate();
@@ -21,8 +20,7 @@ export default function GalleryPage() {
     ];
 
     return (
-        <>
-            <main className="pt-32 pb-24 px-6 md:px-[60px] bg-soft-bg min-h-screen">
+        <main className="pt-32 pb-24 px-6 md:px-[60px] bg-soft-bg min-h-screen">
                 <div className="max-w-7xl mx-auto">
                     <button 
                         onClick={() => navigate(-1)}
@@ -57,7 +55,5 @@ export default function GalleryPage() {
                     </div>
                 </div>
             </main>
-            <Footer />
-        </>
     );
 }
