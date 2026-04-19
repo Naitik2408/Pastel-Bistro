@@ -4,7 +4,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import { Calendar, ArrowRight } from 'lucide-react';
 import { InstagramFeed } from '../components/InstagramFeed';
-import SmartImage from '../components/SmartImage';
 import { Link, useNavigate } from 'react-router-dom';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -53,13 +52,14 @@ const Hero = () => {
                   <button onClick={() => navigate('/reserve')} className="btn-geometric">Book Your Table</button>
                   <button onClick={() => document.getElementById('menu')?.scrollIntoView({ behavior: 'smooth' })} className="btn-geometric bg-transparent border-primary text-primary hover:bg-primary hover:text-white px-8">Explore Menu</button>
               </div>
-                <div className="hero-visual w-full h-[250px] md:h-[320px] rounded-sm overflow-hidden bg-muted relative">
-                  <SmartImage 
+              <div className="hero-visual w-full h-[250px] md:h-[320px] rounded-sm overflow-hidden bg-muted relative">
+                  <img 
                       src="https://images.unsplash.com/photo-1481833761820-0509d3217039?q=70&w=1200&auto=format&fit=crop" 
                       alt="Bistro Atmosphere" 
                       className="w-full h-full object-cover"
+                      referrerPolicy="no-referrer"
                       loading="eager"
-                    fetchPriority="high"
+                      decoding="async"
                   />
               </div>
           </div>
@@ -111,7 +111,7 @@ const CulinaryHighlights = () => {
       { 
         title: "Creamy Alfredo Pasta", 
         desc: "Hand-rolled fettuccine in velvet truffle sauce, finished with aged parmesan and fresh herbs.", 
-        img: "https://images.unsplash.com/photo-1473093295043-cdd812d0e601?q=75&w=1200&auto=format&fit=crop",
+        img: "https://images.unsplash.com/photo-1761168941826-7efda859bdae?q=75&w=1200&auto=format&fit=crop",
         category: "Mains"
       },
       { 
@@ -146,10 +146,13 @@ const CulinaryHighlights = () => {
                 {dishes.map((dish, i) => (
                     <div key={i} className={`flex flex-col ${i % 2 === 1 ? 'md:mt-24' : ''}`}>
                         <div className="group relative overflow-hidden bg-muted aspect-[4/5] mb-8">
-                            <SmartImage 
+                            <img 
                                 src={dish.img} 
                                 alt={dish.title} 
                                 className="w-full h-full object-cover grayscale-[0.2] group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105"
+                                loading="lazy"
+                                decoding="async"
+                                referrerPolicy="no-referrer"
                             />
                             <div className="absolute top-6 left-6">
                                 <span className="bg-white/90 backdrop-blur-sm px-4 py-1 text-[10px] uppercase tracking-[2px] font-bold text-primary">
@@ -217,10 +220,13 @@ const Experience = () => {
           </div>
           <div className="relative mt-12 md:mt-0">
               <div className="absolute inset-0 border border-accent/20 translate-x-4 translate-y-4"></div>
-                <SmartImage 
+              <img 
                   src="https://images.unsplash.com/photo-1550966842-1e967a57a030?q=70&w=1000&auto=format&fit=crop" 
                   alt="Atmosphere" 
                   className="relative z-10 w-full rounded-sm shadow-xl"
+                  loading="lazy"
+                  decoding="async"
+                  referrerPolicy="no-referrer"
               />
           </div>
         </div>
@@ -257,10 +263,13 @@ const Chef = () => {
         <div className="max-w-7xl mx-auto grid md:grid-cols-[1fr_1.2fr] items-center gap-16 md:gap-24">
           <div className="chef-img relative mb-12 md:mb-0">
               <div className="absolute -inset-4 bg-pastel-sage/30 -z-10 rotate-3"></div>
-              <SmartImage 
+              <img 
                 src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?q=70&w=1000&auto=format&fit=crop" 
                 alt="Executive Chef" 
                 className="w-full rounded-sm"
+                loading="lazy"
+                decoding="async"
+                referrerPolicy="no-referrer"
               />
           </div>
           <div className="chef-content">
