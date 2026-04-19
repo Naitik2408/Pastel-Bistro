@@ -1,13 +1,12 @@
-import { useRef, useState, useEffect } from 'react';
-import { gsap } from 'gsap';
-import { useGSAP } from '@gsap/react';
+import { useState, useEffect } from 'react';
 import { Instagram, Play, Heart, MessageCircle, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
 interface InstagramPost {
     id: number;
     type: 'image' | 'reel';
-    url: string;
+    url: string; // Image URL for preview
+    originalUrl: string; // Actual Instagram link
     aspectRatio: string;
     likes: string;
     comments: string;
@@ -18,6 +17,7 @@ const mockPosts: InstagramPost[] = [
         id: 1, 
         type: 'image', 
         url: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80', 
+        originalUrl: 'https://www.instagram.com/p/DXO_NT3E6W7/',
         aspectRatio: 'aspect-[3/4]', 
         likes: '243', 
         comments: '12' 
@@ -26,6 +26,7 @@ const mockPosts: InstagramPost[] = [
         id: 2, 
         type: 'reel', 
         url: 'https://images.unsplash.com/photo-1559925393-8be0ec4767c8?auto=format&fit=crop&q=80', 
+        originalUrl: 'https://www.instagram.com/p/DXJzMG4E8Ge/',
         aspectRatio: 'aspect-square', 
         likes: '1.2k', 
         comments: '45' 
@@ -34,6 +35,7 @@ const mockPosts: InstagramPost[] = [
         id: 3, 
         type: 'image', 
         url: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80', 
+        originalUrl: 'https://www.instagram.com/p/DXEm8ZGk9Bi/',
         aspectRatio: 'aspect-[9/16]', 
         likes: '890', 
         comments: '28' 
@@ -42,6 +44,7 @@ const mockPosts: InstagramPost[] = [
         id: 4, 
         type: 'reel', 
         url: 'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&q=80', 
+        originalUrl: 'https://www.instagram.com/p/DW88GixE1Dx/',
         aspectRatio: 'aspect-[3/4]', 
         likes: '3.4k', 
         comments: '112' 
@@ -50,6 +53,7 @@ const mockPosts: InstagramPost[] = [
         id: 5, 
         type: 'image', 
         url: 'https://images.unsplash.com/photo-1521017432531-fbd92d744264?auto=format&fit=crop&q=80', 
+        originalUrl: 'https://www.instagram.com/p/DW3vJRsGWSK/',
         aspectRatio: 'aspect-square', 
         likes: '567', 
         comments: '19' 
@@ -58,6 +62,7 @@ const mockPosts: InstagramPost[] = [
         id: 6, 
         type: 'image', 
         url: 'https://images.unsplash.com/photo-1466633393038-c30227530671?auto=format&fit=crop&q=80', 
+        originalUrl: 'https://www.instagram.com/p/DWtfeCeE5Z_/',
         aspectRatio: 'aspect-[3/2]', 
         likes: '312', 
         comments: '8' 
@@ -66,6 +71,7 @@ const mockPosts: InstagramPost[] = [
         id: 7, 
         type: 'image', 
         url: 'https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&q=80', 
+        originalUrl: 'https://www.instagram.com/p/DWoUoVek3O9/',
         aspectRatio: 'aspect-[9/16]', 
         likes: '2.1k', 
         comments: '67' 
@@ -74,6 +80,7 @@ const mockPosts: InstagramPost[] = [
         id: 8, 
         type: 'reel', 
         url: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&q=80', 
+        originalUrl: 'https://www.instagram.com/p/DVyPOdykRrA/',
         aspectRatio: 'aspect-[3/4]', 
         likes: '1.5k', 
         comments: '34' 
@@ -82,68 +89,32 @@ const mockPosts: InstagramPost[] = [
         id: 9, 
         type: 'image', 
         url: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80', 
+        originalUrl: 'https://www.instagram.com/p/DVvtm1yk9TC/',
         aspectRatio: 'aspect-square', 
         likes: '723', 
         comments: '25' 
     },
-    { 
-        id: 10, 
-        type: 'image', 
-        url: 'https://images.unsplash.com/photo-1485872299829-c673f5194813?auto=format&fit=crop&q=80', 
-        aspectRatio: 'aspect-[3/4]', 
-        likes: '456', 
-        comments: '14' 
-    },
 ];
 
 export const InstagramFeed = () => {
-    const containerRef = useRef<HTMLDivElement>(null);
     const [selectedPost, setSelectedPost] = useState<InstagramPost | null>(null);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        const timer = setTimeout(() => setIsLoading(false), 1000);
+        const timer = setTimeout(() => setIsLoading(false), 500);
         return () => clearTimeout(timer);
     }, []);
 
-    useGSAP(() => {
-        if (!isLoading) {
-            gsap.from('.insta-card', {
-                opacity: 0,
-                y: 40,
-                stagger: {
-                    amount: 0.8,
-                    grid: [4, 4],
-                    from: 'random'
-                },
-                duration: 1.2,
-                ease: 'expo.out'
-            });
-        }
-    }, { scope: containerRef, dependencies: [isLoading] });
-
     return (
-        <section ref={containerRef} className="py-24 px-6 md:px-[60px] bg-soft-bg relative overflow-hidden">
+        <section className="py-24 px-6 md:px-[60px] bg-soft-bg relative">
             {/* Background Decorative Element */}
-            <div className="absolute top-0 right-0 w-1/3 h-full bg-primary/[0.02] -skew-x-12 translate-x-1/2 pointer-events-none" />
+            <div className="absolute top-0 right-0 w-1/3 h-full bg-primary/[0.01] -skew-x-12 translate-x-1/2 pointer-events-none" />
 
             <div className="max-w-7xl mx-auto relative">
                 <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
                     <div className="max-w-2xl">
-                        <motion.span 
-                            initial={{ opacity: 0, x: -20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            className="section-label-gold"
-                        >
-                            Guest Moments
-                        </motion.span>
-                        <motion.h2 
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            className="text-4xl md:text-6xl font-serif italic mb-4"
-                        >
-                            From Our Instagram
-                        </motion.h2>
+                        <span className="section-label-gold">Guest Moments</span>
+                        <h2 className="text-4xl md:text-6xl font-serif italic mb-4">From Our Instagram</h2>
                         <p className="text-primary/60 max-w-md font-sans leading-relaxed">
                             A window into our daily craft, captured through the eyes of our community. 
                             Tag us <span className="text-accent font-medium">#PastelBistro</span> to be featured.
@@ -163,28 +134,27 @@ export const InstagramFeed = () => {
                 {/* Pinterest Style Grid */}
                 <div className="columns-2 md:columns-3 lg:columns-4 gap-6 space-y-6">
                     {isLoading ? (
-                        Array.from({ length: 10 }).map((_, i) => (
-                            <div key={i} className={`bg-black/5 animate-pulse rounded-sm border border-black/5 ${i % 3 === 0 ? 'h-80' : 'h-64'}`} />
+                        Array.from({ length: 9 }).map((_, i) => (
+                            <div key={i} className={`bg-black/5 rounded-sm border border-black/5 ${i % 3 === 0 ? 'h-80' : 'h-64'}`} />
                         ))
                     ) : (
                         mockPosts.map((post) => (
-                            <motion.div 
+                            <div 
                                 key={post.id} 
-                                layoutId={`card-${post.id}`}
-                                className={`insta-card break-inside-avoid group relative overflow-hidden bg-white cursor-pointer rounded-sm border border-black/5 shadow-sm transition-all duration-500 hover:shadow-xl hover:-translate-y-1`}
+                                className="insta-card break-inside-avoid group relative overflow-hidden bg-white cursor-pointer rounded-sm border border-black/5 shadow-sm transition-all duration-300 hover:shadow-lg"
                                 onClick={() => setSelectedPost(post)}
                             >
                                 <div className={`${post.aspectRatio} relative overflow-hidden`}>
-                                    <motion.img 
+                                    <img 
                                         src={post.url} 
                                         alt="Pastel Bistro Instagram" 
-                                        className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                                         loading="lazy"
                                         referrerPolicy="no-referrer"
                                     />
                                     
                                     {/* Sublte Overlay */}
-                                    <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                                    <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                                 </div>
 
                                 {/* Reels Icon */}
@@ -196,23 +166,18 @@ export const InstagramFeed = () => {
 
                                 {/* Hover Info */}
                                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 z-20">
-                                    <div className="flex gap-6 text-white translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                                    <div className="flex gap-6 text-white text-sm font-medium">
                                         <div className="flex items-center gap-2">
                                             <Heart className="w-5 h-5 fill-white" />
-                                            <span className="text-sm font-bold tracking-wider">{post.likes}</span>
+                                            <span>{post.likes}</span>
                                         </div>
                                         <div className="flex items-center gap-2">
                                             <MessageCircle className="w-5 h-5 fill-white" />
-                                            <span className="text-sm font-bold tracking-wider">{post.comments}</span>
+                                            <span>{post.comments}</span>
                                         </div>
                                     </div>
                                 </div>
-
-                                {/* Floating Label */}
-                                <div className="absolute bottom-4 left-4 text-[10px] uppercase tracking-[2px] text-white/80 opacity-0 lg:group-hover:opacity-100 transition-opacity z-20 font-medium">
-                                    @{post.type === 'reel' ? 'PastelReels' : 'PastelMoments'}
-                                </div>
-                            </motion.div>
+                            </div>
                         ))
                     )}
                 </div>
@@ -240,7 +205,10 @@ export const InstagramFeed = () => {
                         />
                         
                         <motion.div 
-                            layoutId={`card-${selectedPost.id}`}
+                            initial={{ scale: 0.9, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            exit={{ scale: 0.9, opacity: 0 }}
+                            transition={{ duration: 0.3, ease: "easeOut" }}
                             className="relative w-full max-w-4xl bg-white rounded-sm overflow-hidden flex flex-col md:flex-row shadow-2xl z-10"
                         >
                             <button 
@@ -297,7 +265,7 @@ export const InstagramFeed = () => {
                                 <div className="mt-8 pt-8 border-t border-black/5">
                                     <button 
                                         className="w-full py-4 bg-primary text-white text-[11px] uppercase tracking-[2px] font-bold hover:bg-primary/90 transition-all"
-                                        onClick={() => window.open('https://instagram.com', '_blank')}
+                                        onClick={() => window.open(selectedPost.originalUrl, '_blank')}
                                     >
                                         View on Instagram
                                     </button>

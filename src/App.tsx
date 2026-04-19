@@ -3,11 +3,18 @@ import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react
 import { Menu, X, Instagram, Facebook, Phone as WhatsApp } from 'lucide-react';
 import { cn } from './lib/utils';
 import Lenis from 'lenis';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 // Pages
 import Home from './pages/Home';
 import ReservePage from './pages/ReservePage';
 import MenuPage from './pages/MenuPage';
+
+// Register GSAP plugins
+if (typeof window !== 'undefined') {
+    gsap.registerPlugin(ScrollTrigger);
+}
 
 // --- Shared Components ---
 
@@ -143,15 +150,17 @@ export default function App() {
         smoothWheel: true,
     });
 
-    function raf(time: number) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
+    lenis.on('scroll', ScrollTrigger.update);
 
-    requestAnimationFrame(raf);
+    gsap.ticker.add((time) => {
+        lenis.raf(time * 1000);
+    });
+
+    gsap.ticker.lagSmoothing(0);
 
     return () => {
       lenis.destroy();
+      gsap.ticker.remove(lenis.raf);
     };
   }, []);
 
