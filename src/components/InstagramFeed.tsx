@@ -11,12 +11,14 @@ interface InstagramPost {
     comments: string;
 }
 
+const INSTAGRAM_PROFILE_URL = 'https://www.instagram.com/pastelbistroindia/?hl=en';
+
 const mockPosts: InstagramPost[] = [
     { 
         id: 1, 
         type: 'image', 
         url: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=70&w=800&auto=format&fit=crop', 
-        originalUrl: 'https://www.instagram.com/',
+        originalUrl: INSTAGRAM_PROFILE_URL,
         aspectRatio: 'aspect-[4/5]', 
         likes: '243', 
         comments: '12' 
@@ -25,7 +27,7 @@ const mockPosts: InstagramPost[] = [
         id: 2, 
         type: 'reel', 
         url: 'https://images.unsplash.com/photo-1559925393-8be0ec4767c8?q=70&w=800&auto=format&fit=crop', 
-        originalUrl: 'https://www.instagram.com/',
+        originalUrl: INSTAGRAM_PROFILE_URL,
         aspectRatio: 'aspect-[4/5]', 
         likes: '1.2k', 
         comments: '45' 
@@ -34,7 +36,7 @@ const mockPosts: InstagramPost[] = [
         id: 3, 
         type: 'image', 
         url: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=70&w=800&auto=format&fit=crop', 
-        originalUrl: 'https://www.instagram.com/',
+        originalUrl: INSTAGRAM_PROFILE_URL,
         aspectRatio: 'aspect-[4/5]', 
         likes: '890', 
         comments: '28' 
@@ -43,7 +45,7 @@ const mockPosts: InstagramPost[] = [
         id: 4, 
         type: 'reel', 
         url: 'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=70&w=800&auto=format&fit=crop', 
-        originalUrl: 'https://www.instagram.com/',
+        originalUrl: INSTAGRAM_PROFILE_URL,
         aspectRatio: 'aspect-[4/5]', 
         likes: '3.4k', 
         comments: '112' 
@@ -52,7 +54,7 @@ const mockPosts: InstagramPost[] = [
         id: 5, 
         type: 'image', 
         url: 'https://images.unsplash.com/photo-1624878359580-4d79cfc1e6b2?q=70&w=800&auto=format&fit=crop', 
-        originalUrl: 'https://www.instagram.com/',
+        originalUrl: INSTAGRAM_PROFILE_URL,
         aspectRatio: 'aspect-[4/5]', 
         likes: '567', 
         comments: '19' 
@@ -61,7 +63,7 @@ const mockPosts: InstagramPost[] = [
         id: 6, 
         type: 'image', 
         url: 'https://images.unsplash.com/photo-1666770002650-053dd70866af?q=70&w=800&auto=format&fit=crop', 
-        originalUrl: 'https://www.instagram.com/',
+        originalUrl: INSTAGRAM_PROFILE_URL,
         aspectRatio: 'aspect-[4/5]', 
         likes: '312', 
         comments: '8' 
@@ -70,7 +72,7 @@ const mockPosts: InstagramPost[] = [
         id: 7, 
         type: 'image', 
         url: 'https://images.unsplash.com/photo-1552566626-52f8b828add9?q=70&w=800&auto=format&fit=crop', 
-        originalUrl: 'https://www.instagram.com/',
+        originalUrl: INSTAGRAM_PROFILE_URL,
         aspectRatio: 'aspect-[4/5]', 
         likes: '2.1k', 
         comments: '67' 
@@ -79,7 +81,7 @@ const mockPosts: InstagramPost[] = [
         id: 8, 
         type: 'reel', 
         url: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?q=70&w=800&auto=format&fit=crop', 
-        originalUrl: 'https://www.instagram.com/',
+        originalUrl: INSTAGRAM_PROFILE_URL,
         aspectRatio: 'aspect-[4/5]', 
         likes: '1.5k', 
         comments: '34' 
@@ -88,7 +90,7 @@ const mockPosts: InstagramPost[] = [
         id: 9, 
         type: 'image', 
         url: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=70&w=800&auto=format&fit=crop', 
-        originalUrl: 'https://www.instagram.com/',
+        originalUrl: INSTAGRAM_PROFILE_URL,
         aspectRatio: 'aspect-[4/5]', 
         likes: '723', 
         comments: '25' 
@@ -114,7 +116,7 @@ export const InstagramFeed = () => {
                         </p>
                     </div>
                     <a 
-                        href="https://www.instagram.com/reels/CtU_yLMgpQe/" 
+                        href={INSTAGRAM_PROFILE_URL}
                         target="_blank" 
                         rel="noreferrer"
                         className="btn-geometric px-10 flex items-center gap-3 group whitespace-nowrap"
@@ -172,7 +174,7 @@ export const InstagramFeed = () => {
                 <div className="mt-16 text-center">
                     <button 
                         className="btn-geometric px-12 py-4 tracking-[4px] border border-primary hover:bg-white hover:text-primary"
-                        onClick={() => window.open('https://www.instagram.com/reels/CtU_yLMgpQe/', '_blank')}
+                        onClick={() => window.open(INSTAGRAM_PROFILE_URL, '_blank')}
                     >
                         View More on Instagram
                     </button>

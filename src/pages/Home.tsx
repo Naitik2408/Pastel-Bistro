@@ -4,7 +4,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import { Calendar, ArrowRight } from 'lucide-react';
 import { InstagramFeed } from '../components/InstagramFeed';
-import Footer from '../components/Footer';
 import { Link, useNavigate } from 'react-router-dom';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -385,7 +384,6 @@ export default function Home() {
             <InstagramFeed />
             <MenuPreview />
             <BookingSummary />
-            <Footer />
         </div>
     );
 }
