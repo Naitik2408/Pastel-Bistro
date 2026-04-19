@@ -10,6 +10,8 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Home from './pages/Home';
 import ReservePage from './pages/ReservePage';
 import MenuPage from './pages/MenuPage';
+import StoryPage from './pages/StoryPage';
+import GalleryPage from './pages/GalleryPage';
 
 // Register GSAP plugins
 if (typeof window !== 'undefined') {
@@ -71,13 +73,13 @@ const WhatsAppCTA = () => {
         <div className="py-16 bg-soft-bg flex flex-col items-center justify-center gap-8 border-b border-black/5">
             <span className="section-label-gold mb-0">Direct Concierge</span>
             <a 
-                href="https://wa.me/1234567890?text=Hi,%20I'd%20like%20to%20book%20a%20table%20at%20Pastel%20Bistro" 
+                href="https://wa.me/919056014963?text=Hi,%20I'd%20like%20to%20book%20a%20table%20at%20Pastel%20Bistro" 
                 target="_blank" 
                 rel="noreferrer"
                 className="flex items-center gap-4 text-xl font-serif text-primary hover:text-accent transition-all group"
             >
                 <WhatsApp className="w-6 h-6 animate-pulse" /> 
-                <span className="border-b border-black/10 group-hover:border-accent">Reserve on WhatsApp</span>
+                <span className="border-b border-black/10 group-hover:border-accent">9056014963</span>
             </a>
         </div>
     );
@@ -90,11 +92,15 @@ const Footer = () => {
                 <div className="max-w-md">
                     <h3 className="text-2xl md:text-3xl font-serif italic mb-6">Pastel Bistro</h3>
                     <p className="text-primary/50 text-sm font-light leading-relaxed mb-8">
-                        Where every plate tells a story and every evening is an masterpiece. Established in 1994 to bring French avant-garde culinary arts to your table.
+                        Where every plate tells a story and every evening is an masterpiece. Established in 1994 to bring avant-garde culinary arts to Punjabi hearts.
                     </p>
                     <div className="flex gap-4">
-                        <a href="https://instagram.com" target="_blank" rel="noreferrer" className="p-3 border border-black/5 hover:bg-primary hover:text-white transition-all"><Instagram className="w-5 h-5" /></a>
-                        <a href="https://facebook.com" target="_blank" rel="noreferrer" className="p-3 border border-black/5 hover:bg-primary hover:text-white transition-all"><Facebook className="w-5 h-5" /></a>
+                        <a href="https://www.instagram.com/pastelbistroindia/?hl=en" target="_blank" rel="noreferrer" className="p-3 border border-black/5 hover:bg-primary hover:text-white transition-all"><Instagram className="w-5 h-5" /></a>
+                        <a href="https://www.threads.com/@pastelbistroindia?xmt=AQF0VB1sQpsE0esFhifWioNj5BL1O_qnIojq3Wr-o5YVUsg" target="_blank" rel="noreferrer" className="p-3 border border-black/5 hover:bg-primary hover:text-white transition-all">
+                            <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                                <path d="M12 21.6C6.7 21.6 2.4 17.3 2.4 12C2.4 6.7 6.7 2.4 12 2.4C17.3 2.4 21.6 6.7 21.6 12C21.6 17.3 17.3 21.6 12 21.6ZM12 4.8C8 4.8 4.8 8 4.8 12C4.8 16 8 19.2 12 19.2C16 19.2 19.2 16 19.2 12C19.2 8 16 4.8 12 4.8ZM16.2 12C16.2 14.3 14.3 16.2 12 16.2C9.7 16.2 7.8 14.3 7.8 12C7.8 9.7 9.7 7.8 12 7.8C14.3 7.8 16.2 9.7 16.2 12Z"/>
+                            </svg>
+                        </a>
                     </div>
                 </div>
                 
@@ -102,23 +108,23 @@ const Footer = () => {
                     <div>
                         <span className="section-label-gold">Location</span>
                         <p className="text-primary/60 text-sm leading-relaxed">
-                            Avenue Montaigne,<br/>Paris, France 75008
+                            1st Floor, SCO 100C, Phase 2, <br/>Urban Estate phase II, Jalandhar, <br/>Punjab 144005
                         </p>
                     </div>
                     <div>
                         <span className="section-label-gold">Inquiries</span>
                         <p className="text-primary/60 text-sm leading-relaxed mb-1">
-                            concierge@pastel.com
+                            hello@pastelbistro.in
                         </p>
                         <p className="text-primary/60 text-sm leading-relaxed">
-                            +33 (0) 1 42 25 25 25
+                            +91 90560-14963
                         </p>
                     </div>
                 </div>
             </div>
             
             <div className="max-w-7xl mx-auto mt-12 md:mt-20 pt-8 border-t border-black/5 flex flex-col md:flex-row justify-between items-center text-[10px] text-primary/30 uppercase tracking-[2px] gap-4">
-                <p>© 2024 Pastel Bistro. Paris.</p>
+                <p>© 2024 Pastel Bistro. Jalandhar.</p>
                 <div className="flex gap-6">
                     <a href="#" className="hover:text-accent transition-colors">Privacy</a>
                     <a href="#" className="hover:text-accent transition-colors">Legal</a>
@@ -173,6 +179,8 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/reserve" element={<ReservePage />} />
           <Route path="/menu" element={<MenuPage />} />
+          <Route path="/story" element={<StoryPage />} />
+          <Route path="/gallery" element={<GalleryPage />} />
         </Routes>
         <WhatsAppCTA />
         <Footer />

@@ -194,6 +194,7 @@ const CulinaryHighlights = () => {
 
 const Experience = () => {
     const experienceRef = useRef<HTMLDivElement>(null);
+    const navigate = useNavigate();
   
     useGSAP(() => {
       gsap.from('.exp-text', {
@@ -216,7 +217,12 @@ const Experience = () => {
               <p className="text-lg md:text-xl text-primary/70 leading-relaxed font-light mb-8 md:mb-10 max-w-xl">
               At Pastel Bistro, we believe that dining is an art form. Every dish is a brushstroke, every flavour a note in a symphony. We combine traditional techniques with modern elegance.
               </p>
-              <button className="btn-geometric">The Full Story</button>
+              <button 
+                  onClick={() => navigate('/story')}
+                  className="btn-geometric"
+              >
+                  The Full Story
+              </button>
           </div>
           <div className="relative mt-12 md:mt-0">
               <div className="absolute inset-0 border border-accent/20 translate-x-4 translate-y-4"></div>
@@ -236,6 +242,7 @@ const Experience = () => {
   
 const Chef = () => {
     const chefRef = useRef<HTMLDivElement>(null);
+    const navigate = useNavigate();
   
     useGSAP(() => {
       gsap.from('.chef-img', {
@@ -283,7 +290,12 @@ const Chef = () => {
                   "Food should be effortless to enjoy, yet impossible to forget."
               </p>
             </div>
-            <button className="btn-geometric px-12">Chef's Gallery</button>
+            <button 
+                onClick={() => navigate('/gallery')}
+                className="btn-geometric px-12"
+            >
+                Chef's Gallery
+            </button>
           </div>
         </div>
       </section>
